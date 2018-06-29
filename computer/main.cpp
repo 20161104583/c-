@@ -284,7 +284,7 @@ void Singer ::import(char filename[],LNode*head)
 }
 int main(int argc, const char * argv[]) {
     // insert code here...
-    string singer;
+    Singer singer;
     LNode *head=NULL;
     LNode newsin;
     string name;
@@ -305,9 +305,71 @@ int main(int argc, const char * argv[]) {
                 if(false)
                 {
                     cout<<"你所创建的链表，原有链表将丢失，是否继续！（Y/N）";
+                    cin>>c;
+                    if(!(c=='y')||(c=='Y'))
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        n=0;
+                        head=Create();
+                        system("pause");
+                        break;
+                    }
                 }
+                else
+                {
+                    head=Create();
+                    system("pause");
+                    break;
+                }
+            case '2':
+                singer.grade(head);
+                system("pause");
+                break;
+            case '3':
+                singer.print(head);
+                system("pause");
+                break;
+            case '4':
+                cout<<"程序排序结果为："<<endl;
+                singer.rank(head);
+                system("pause");
+                break;
+            case '5':
+                cout<<"请输入编号："<<endl;
+                cin>>num;
+                singer.inquire(head,num);
+                system("pause");
+                break;
+            case '6':
+                cout<<"新增选手的姓名，编号："<<endl;
+                cin>>newsin.name;
+                cin>>newsin.num;
+                singer.insert(head,&newsin);
+                system("pause");
+                break;
+            case '7':
+                cout<<"请输入文件名："<<endl;
+                cin>>filename;
+                singer.save(head,filename);
+                system("pause");
+                break;
+            case '8':
+                cout<<"请输入文件名："<<endl;
+                cin>>filename;
+                singer.import(filename,head);
+                system("pause");
+                break;
+            case '0':
+                quit=true;
+                break;
+            default:
+                cout<<"输入错误！"<<endl;
         }
+        if(quit)
+            break;
     }
     return 0;
 }
-
